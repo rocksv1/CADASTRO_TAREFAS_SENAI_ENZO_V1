@@ -60,10 +60,22 @@ body.modo-escuro::before {
     max-width: 440px;
     border: 3px solid var(--cor-borda);
     border-radius: 10px;
-    padding: 28px;
+    --espaco: 28px;
+    padding: var(--espaco);
+    overflow: hidden;
     box-shadow: 0 10px 30px var(--brilho), inset 0 0 0 2px rgba(0, 0, 0, 0.45);
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.6);
     animation: entrar 0.5s ease;
+}
+
+.banner {
+    display: block;
+    width: calc(100% + var(--espaco) * 2);
+    height: 150px;
+    margin: calc(var(--espaco) * -1) calc(var(--espaco) * -1) 20px;
+    object-fit: cover;
+    object-position: center 40%;
+    border-bottom: 3px solid var(--cor-borda);
 }
 
 .cabecalho-aplicacao {
@@ -74,17 +86,12 @@ body.modo-escuro::before {
 }
 
 .foto {
-    width: 48px;
-    height: 48px;
+    width: 72px;
+    height: 72px;
     border-radius: 12px;
     object-fit: cover;
     object-position: center 30%;
     border: 2px solid var(--cor-primaria);
-    transition: transform 0.3s;
-}
-
-.foto:hover {
-    transform: rotate(-6deg) scale(1.1);
 }
 
 .titulo-bloco {
@@ -169,6 +176,50 @@ input[type="text"]:focus {
     transform: scale(0.95);
 }
 
+.filtros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.botao-filtro {
+    flex: 1;
+    background: transparent;
+    color: var(--cor-suave);
+    border: 2px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 6px 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.15s, background 0.2s, color 0.2s;
+}
+
+.botao-filtro:hover {
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+}
+
+.botao-filtro.ativo {
+    background: var(--cor-primaria);
+    color: var(--texto-primaria);
+    border-color: var(--cor-primaria);
+    text-shadow: none;
+    font-weight: 600;
+}
+
+.item-tarefa[hidden] {
+    display: none;
+}
+
+.item-tarefa span {
+    cursor: text;
+}
+
+.campo-edicao {
+    padding: 4px 8px !important;
+    font-size: 0.95rem !important;
+}
+
 .lista-tarefas {
     list-style: none;
     max-height: 280px;
@@ -239,6 +290,30 @@ input[type="text"]:focus {
     text-align: center;
 }
 
+.botao-limpar {
+    display: block;
+    margin: 12px auto 0;
+    background: transparent;
+    color: var(--cor-suave);
+    border: 2px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: transform 0.15s, color 0.2s, border-color 0.2s, opacity 0.2s;
+}
+
+.botao-limpar:hover:not(:disabled) {
+    color: var(--cor-perigo);
+    border-color: var(--cor-perigo);
+    transform: translateY(-2px);
+}
+
+.botao-limpar:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
 @keyframes entrar {
     from {
         opacity: 0;
@@ -266,6 +341,9 @@ input[type="text"]:focus {
 /* Celular */
 @media (max-width: 480px) {
     .cartao-aplicacao {
-        padding: 20px;
+        --espaco: 20px;
+    }
+    .banner {
+        height: 120px;
     }
 }
