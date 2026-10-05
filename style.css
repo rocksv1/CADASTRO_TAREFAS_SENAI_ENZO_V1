@@ -1,4 +1,3 @@
-/* Variaveis CSS - facilitar o uso de temas para formataçao */
 :root {
     --fundo-pagina: #c9d8f5;
     --fundo-cartao: linear-gradient(180deg, #1b3fd1 0%, #0a1a6b 100%);
@@ -12,8 +11,6 @@
     --cor-perigo: #ff6b6b;
     --brilho: rgba(10, 26, 107, 0.35);
 }
-
-/* Modo escuro: noite em Midgar, com o verde do Mako */
 body.modo-escuro {
     --fundo-pagina: #050d09;
     --fundo-cartao: linear-gradient(180deg, #11382a 0%, #04120b 100%);
@@ -42,8 +39,6 @@ body {
     align-items: center;
     padding: 20px;
 }
-
-/* Imagem de fundo: invisível no modo claro, aparece suavemente no escuro */
 body::before {
     content: '';
     position: fixed;
